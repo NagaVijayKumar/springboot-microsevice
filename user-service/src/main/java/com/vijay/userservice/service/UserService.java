@@ -1,5 +1,6 @@
 package com.vijay.userservice.service;
 
+import com.vijay.userservice.VO.UserWithDeptVO;
 import com.vijay.userservice.model.User;
 
 import java.util.List;
@@ -14,4 +15,5 @@ public interface UserService {
 
     List<User>getUsersByDepartment(long id);
 
+    UserWithDeptVO getUserWithDepartment(long userId);
 }
