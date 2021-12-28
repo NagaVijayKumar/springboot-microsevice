@@ -2,6 +2,7 @@ package com.vijay.departmentservice.controller;
 
 import com.vijay.departmentservice.model.Department;
 import com.vijay.departmentservice.service.DepartmentService;
+import com.vijay.departmentservice.service.SequenceGeneratorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,8 +11,13 @@ import java.util.List;
 @RestController
 @RequestMapping("/department")
 public class DepartmentController {
+
+    @Autowired
+    private SequenceGeneratorService sequenceGeneratorService;
+
     @Autowired
     private DepartmentService departmentService;
+
 
     @GetMapping("/check")
     public String test() {
@@ -20,7 +26,7 @@ public class DepartmentController {
 
     @PostMapping(path = "/save")
     public Department saveDepartment(@RequestBody Department department) {
-
+        department.setDeptId(sequenceGeneratorService.generateSequence(Department.SEQUENCE_NAME));
         return departmentService.saveDepartment(department);
     }
 
