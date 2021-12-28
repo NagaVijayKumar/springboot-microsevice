@@ -2,7 +2,11 @@ package com.vijay.departmentservice.service;
 
 import com.vijay.departmentservice.model.Department;
 
+import java.util.List;
+
 public interface DepartmentService {
-    Department saveDept(Department department);
-    Department findByDeptId(long deptId);
+    Department saveDepartment(Department department);
+    Department findByDepartmentByDepId(long deptId);
+
+    List<Department> getAllDepartments();
 }
