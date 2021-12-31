@@ -4,3 +4,13 @@ spring:
   data:
     mongodb:
       uri: mongodb://localhost:27017/department
+  application:
+    name: DEPARTMENT-SERVICE
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
