@@ -45,7 +45,9 @@ public class UserServiceImpl implements UserService {
         log.info("Get User and Dept with userId is called");
         UserWithDeptVO vo = new UserWithDeptVO();
         User user = userRepository.getUserByID(userId);
-        Department department = restTemplate.getForObject("http://localhost:9001/department/departments/"+user.getDepartmentId(),Department.class);
+//        Department department = restTemplate.getForObject("http://localhost:9001/department/departments/"+user.getDepartmentId(),Department.class);
+        //I'm Register with eureka client, so giving name is enough
+        Department department = restTemplate.getForObject("http://DEPARTMENT-SERVICE/department/departments/"+user.getDepartmentId(),Department.class);
 
         vo.setUser(user);
         vo.setDepartment(department);
@@ -55,6 +57,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getUsersByDepartment(long id) {
+
         return null;
     }
 
